@@ -6,10 +6,8 @@
   <title>Ngwekazi Mailola | Portfolio</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- External glow & slider styles -->
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Pastel theme */
     :root {
       --pink: #ffb3c1;
       --mint: #b3fff0;
@@ -17,9 +15,19 @@
       --cream: #fff8e7;
     }
     body { background: var(--cream); }
-    .card { background: var(--pink); border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: box-shadow 0.3s ease; }
-    .card:hover { box-shadow: 0 0 20px var(--mint), inset 0 0 20px var(--lavender); }
-    .section-title { font-family: 'Comic Sans MS', cursive, sans-serif; }
+    .card {
+      background: var(--pink);
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 0 20px var(--mint), inset 0 0 20px var(--lavender);
+    }
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+}
   </style>
 </head>
 <body class="p-6">
@@ -38,13 +46,11 @@
   <section class="mb-12" id="projects">
     <h2 class="text-3xl font-semibold section-title mb-6">🐍 Python Projects</h2>
     <div class="grid md:grid-cols-2 gap-6">
-      <!-- Learning Platform -->
       <div class="card p-6">
-        <h3 class="text-2xl font-bold">Learning Platform Development(Internship Project)</h3>
+        <h3 class="text-2xl font-bold">Learning Platform Development (Internship Project)</h3>
         <p class="mt-2">A full-stack learning platform enabling registration and management of admins, lecturers, and students, with comprehensive content management and traceability features. Built with Django, React.js, MySQL, and MongoDB. <a href="https://github.com/ngwekazimailola/Learning_Platform" class="underline">Code &raquo;</a></p>
-        <p class="text-sm mt-2 text-gray-700">Language: Django, React.js, MySQL, MySQL</p>
+        <p class="text-sm mt-2 text-gray-700">Language: Django, React.js, MySQL</p>
       </div>
-      <!-- Tech Sales Management -->
       <div class="card p-6">
         <h3 class="text-2xl font-bold">Tech Sales Management App</h3>
         <p class="mt-2">Application to manage shop details, sales, returns, and stock for a tech company. Features continuous user input, error handling, and confirmation messages. <a href="https://github.com/ngwekazimailola/Python-Tech-Sales-Management-Application" class="underline">Code &raquo;</a></p>
@@ -58,14 +64,26 @@
     <h2 class="text-3xl font-semibold section-title mb-6">💻 Websites</h2>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="card p-6">
+        <h3 class="text-2xl font-bold">School Educational Website</h3>
+        <p class="mt-2">Responsive educational website featuring multimedia integration and user-friendly design, providing students with a visually appealing and accessible online learning experience.</p>
+        <p class="text-sm mt-2 text-gray-700">Technologies: HTML, CSS, JavaScript</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Web Applications -->
+  <section class="mb-12">
+    <h2 class="text-3xl font-semibold section-title mb-6">🌐 Web Applications</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card p-6">
         <h3 class="text-2xl font-bold">Municipality Management System</h3>
         <p class="mt-2">ASP.NET Core MVC application for managing municipal data and operations with intuitive UI and secure backend. <a href="https://github.com/ngwekazimailola/Municipality-Management-System" class="underline">Code &raquo;</a></p>
         <p class="text-sm mt-2 text-gray-700">Languages: HTML, C#</p>
       </div>
       <div class="card p-6">
-        <h3 class="text-2xl font-bold">School Educational Website</h3>
-        <p class="mt-2">Responsive educational website featuring multimedia integration and user-friendly design, providing students with a visually appealing and accessible online learning experience.</p>
-        <p class="text-sm mt-2 text-gray-700">Technologies: HTML, CSS, JavaScript</p>
+        <h3 class="text-2xl font-bold">BookManager API</h3>
+        <p class="mt-2">C# RESTful API for CRUD operations on book records. <a href="https://github.com/ngwekazimailola/BookManagerAPI" class="underline">Code &raquo;</a></p>
+        <p class="text-sm mt-2 text-gray-700">Language: C#</p>
       </div>
     </div>
   </section>
@@ -74,18 +92,26 @@
   <section class="mb-12">
     <h2 class="text-3xl font-semibold section-title mb-6">☕ Java Projects</h2>
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="card p-6"><h3 class="text-2xl font-bold">Calculator Desktop App</h3><p class="mt-2">Java Swing application offering basic arithmetic operations with a user-friendly GUI. <a href="https://github.com/ngwekazimailola/Java-Calculator-Desktop-Application" class="underline">Code &raquo;</a></p><p class="text-sm mt-2 text-gray-700">Language: Java</p></div>
-      <div class="card p-6"><h3 class="text-2xl font-bold">Advanced Library Management System</h3><p class="mt-2">Feature-rich Java application for book/member management, due-date tracking, and fine calculation with file-based persistence. <a href="https://github.com/ngwekazimailola/Java-Advanced-Library-Management-System" class="underline">Code &raquo;</a></p><p class="text-sm mt-2 text-gray-700">Language: Java</p></div>
-      <div class="card p-6"><h3 class="text-2xl font-bold">Digital Clock</h3><p class="mt-2">Java GUI clock updating every second using multithreading to ensure smooth UI updates. <a href="https://github.com/ngwekazimailola/Java-Digital-Clock" class="underline">Code &raquo;</a></p><p class="text-sm mt-2 text-gray-700">Language: Java</p></div>
-      <div class="card p-6"><h3 class="text-2xl font-bold">Library Management System</h3><p class="mt-2">Console-based Java application for basic library operations: book/member management, search, and checkout. <a href="https://github.com/ngwekazimailola/Java-Library-Management-System" class="underline">Code &raquo;</a></p><p class="text-sm mt-2 text-gray-700">Language: Java</p></div>
-    </div>
-  </section>
-
-  <!-- Web Applications -->
-  <section class="mb-12">
-    <h2 class="text-3xl font-semibold section-title mb-6">🌐 Web Applications</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="card p-6"><h3 class="text-2xl font-bold">BookManager API</h3><p class="mt-2">C# RESTful API for CRUD operations on book records. <a href="https://github.com/ngwekazimailola/BookManagerAPI" class="underline">Code &raquo;</a></p><p class="text-sm mt-2 text-gray-700">Language: C#</p></div>
+      <div class="card p-6">
+        <h3 class="text-2xl font-bold">Calculator Desktop App</h3>
+        <p class="mt-2">Java Swing application offering basic arithmetic operations with a user-friendly GUI. <a href="https://github.com/ngwekazimailola/Java-Calculator-Desktop-Application" class="underline">Code &raquo;</a></p>
+        <p class="text-sm mt-2 text-gray-700">Language: Java</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="text-2xl font-bold">Advanced Library Management System</h3>
+        <p class="mt-2">Feature-rich Java application for book/member management, due-date tracking, and fine calculation with file-based persistence. <a href="https://github.com/ngwekazimailola/Java-Advanced-Library-Management-System" class="underline">Code &raquo;</a></p>
+        <p class="text-sm mt-2 text-gray-700">Language: Java</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="text-2xl font-bold">Digital Clock</h3>
+        <p class="mt-2">Java GUI clock updating every second using multithreading to ensure smooth UI updates. <a href="https://github.com/ngwekazimailola/Java-Digital-Clock" class="underline">Code &raquo;</a></p>
+        <p class="text-sm mt-2 text-gray-700">Language: Java</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="text-2xl font-bold">Library Management System</h3>
+        <p class="mt-2">Console-based Java application for basic library operations: book/member management, search, and checkout. <a href="https://github.com/ngwekazimailola/Java-Library-Management-System" class="underline">Code &raquo;</a></p>
+        <p class="text-sm mt-2 text-gray-700">Language: Java</p>
+      </div>
     </div>
   </section>
 
@@ -93,7 +119,11 @@
   <section class="mb-12">
     <h2 class="text-3xl font-semibold section-title mb-6">🔧 C# Projects</h2>
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="card p-6"><h3 class="text-2xl font-bold">Virtual Zoo Management System</h3><p class="mt-2">C# application showcasing OOP principles for managing animals in a virtual zoo. <a href="https://github.com/ngwekazimailola/Advanced-Virtual-Zoo-Management-System" class="underline">Code &raquo;</a></p><p class="text-sm mt-2 text-gray-700">Language: C#</p></div>
+      <div class="card p-6">
+        <h3 class="text-2xl font-bold">Virtual Zoo Management System</h3>
+        <p class="mt-2">C# application showcasing OOP principles for managing animals in a virtual zoo. <a href="https://github.com/ngwekazimailola/Advanced-Virtual-Zoo-Management-System" class="underline">Code &raquo;</a></p>
+        <p class="text-sm mt-2 text-gray-700">Language: C#</p>
+      </div>
     </div>
   </section>
 
