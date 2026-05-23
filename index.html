@@ -3,568 +3,1080 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ngwekazi Mailola | Portfolio</title>
+
+    <title>Ngwekazi Mailola | Java Backend Developer</title>
+
     <link rel="icon" type="image/png" href="favicon.png" />
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        /* Modernized Color Palette & Base Styles */
+
         :root {
-            --primary-bg: #FDFDFD;
-            --secondary-bg: #FFFFFF;
-            --text-dark: #2C3E50;
-            --text-light: #7F8C8D;
-            --accent-main: #9B59B6;
-            --accent-dark: #8E44AD;
-            --accent-light: #F2E7FC;
-            --gradient-start: #D2B4DE;
-            --gradient-end: #A569BD;
-            --soft-blue: #AED6F1;
-            --border-color: #EAECEF;
-            --shadow-light: rgba(0, 0, 0, 0.08);
-            --shadow-hover: rgba(0, 0, 0, 0.18);
+            --primary-bg: #f7f8ff;
+            --secondary-bg: rgba(255,255,255,0.72);
+
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+
+            --accent-main: #a5b4fc;
+            --accent-dark: #7c8cf8;
+            --accent-light: #eef2ff;
+
+            --gradient-start: #c7d2fe;
+            --gradient-end: #e9d5ff;
+
+            --silver-light: #f3f4f6;
+            --silver-border: #dbe2ea;
+
+            --matrix-green: #8bffb0;
+
+            --shadow-light: rgba(99, 102, 241, 0.08);
+            --shadow-hover: rgba(99, 102, 241, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behaviour: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background: var(--primary-bg);
             color: var(--text-dark);
-            line-height: 1.8;
-            scroll-behavior: smooth;
             overflow-x: hidden;
+            line-height: 1.8;
+            position: relative;
         }
 
-        h1, h2, h3, h4 {
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(rgba(165, 180, 252, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(165, 180, 252, 0.04) 1px, transparent 1px);
+
+            background-size: 40px 40px;
+
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "010101010101010101010101010101010101010101010101010101";
+            position: fixed;
+            inset: 0;
+
+            color: rgba(139, 255, 176, 0.03);
+
+            font-family: monospace;
+            font-size: 14px;
+
+            white-space: pre-wrap;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Poppins', sans-serif;
-            color: var(--text-dark);
-            font-weight: 800;
         }
 
-        /* Card Styling */
-        .card {
-            background: var(--secondary-bg);
-            border-radius: 2rem;
-            box-shadow: 0 15px 30px var(--shadow-light);
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            padding: 2.5rem;
-        }
-
-        .card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 50px var(--shadow-hover);
-            border-color: var(--accent-main);
-        }
-
-        .card-content {
-            flex-grow: 1;
-        }
-
-        .card-footer {
-            margin-top: auto;
-            padding-top: 1.8rem;
-        }
-
-        /* Section Titles */
-        .section-title {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 1rem;
-            color: var(--accent-dark);
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            text-shadow: 0 3px 6px rgba(0,0,0,0.05);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 6px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 3px;
-        }
-
-        /* Underline Link Effect */
-        .underline-link {
-            text-decoration: none;
-            color: var(--accent-main);
-            position: relative;
-            padding-bottom: 4px;
-            transition: color 0.3s ease;
-            font-weight: 600;
-        }
-
-        .underline-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 4px;
-            background-color: var(--accent-dark);
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .underline-link:hover {
-            color: var(--accent-dark);
-        }
-
-        .underline-link:hover::after {
-            width: 100%;
-        }
-
-        /* Button Link Styling */
-        .button-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1.1rem 2.5rem;
-            margin-top: 2.5rem;
-            border-radius: 1rem;
-            background: linear-gradient(145deg, var(--accent-main), var(--accent-dark));
-            color: white;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.3);
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-        }
-
-        .button-link:hover {
-            background: linear-gradient(145deg, var(--accent-dark), var(--accent-main));
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 12px 25px rgba(142, 68, 173, 0.4);
-        }
-
-        /* Disabled button style */
-        .button-link.disabled {
-            background: #BDC3C7;
-            cursor: not-allowed;
-            opacity: 0.7;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Hero Section Enhancements */
         .hero-section {
-            background: none;
-            padding: 6rem 1rem;
-            margin-bottom: 6rem;
             position: relative;
+            padding: 7rem 1rem;
             overflow: hidden;
-            perspective: 1000px;
-        }
-
-        /* Abstract shapes for hero background */
-        .hero-section::before,
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            background: radial-gradient(circle, var(--accent-main) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.1;
-            z-index: 0;
         }
 
         .hero-section::before {
-            width: 400px;
-            height: 400px;
-            top: -120px;
-            left: -120px;
-            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-            animation: moveShape 10s infinite alternate ease-in-out;
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            background: radial-gradient(circle, #c7d2fe 0%, transparent 70%);
+
+            top: -150px;
+            left: -100px;
+
+            filter: blur(70px);
+
+            opacity: 0.7;
         }
 
         .hero-section::after {
-            width: 350px;
-            height: 350px;
-            bottom: -100px;
-            right: -100px;
-            background: radial-gradient(circle, var(--soft-blue) 0%, transparent 70%);
-            animation: moveShape 12s infinite alternate-reverse ease-in-out;
-        }
+            content: "";
 
-        @keyframes moveShape {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(20px, 30px) rotate(10deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            background: radial-gradient(circle, #e9d5ff 0%, transparent 70%);
+
+            bottom: -150px;
+            right: -100px;
+
+            filter: blur(70px);
+
+            opacity: 0.7;
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .hero-title {
             font-size: 5rem;
+            font-weight: 900;
             line-height: 1.1;
-            background: linear-gradient(90deg, var(--text-dark), var(--accent-dark));
+
+            background: linear-gradient(
+                90deg,
+                #1f2937,
+                #7c8cf8
+            );
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 900;
-            letter-spacing: -0.04em;
-            text-shadow: 0 6px 12px rgba(0,0,0,0.1);
+
+            letter-spacing: -0.05em;
         }
 
         .hero-subtitle {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             color: var(--text-light);
+            margin-top: 1.5rem;
             font-weight: 500;
-            margin-top: 1rem;
         }
 
-        /* Project Category Icons */
-        .project-category-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-main);
-            filter: drop-shadow(0 5px 12px rgba(155, 89, 182, 0.2));
-            transition: transform 0.3s ease;
+        .terminal-line {
+            font-family: monospace;
+            color: var(--matrix-green);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
-        .project-category-icon:hover {
-            transform: scale(1.1) rotate(5deg);
+        .button-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+
+            padding: 1rem 2rem;
+
+            border-radius: 1rem;
+
+            background: linear-gradient(
+                135deg,
+                var(--accent-main),
+                var(--accent-dark)
+            );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: 0.3s ease;
+
+            box-shadow: 0 10px 30px rgba(124,140,248,0.18);
         }
 
-        /* Card-specific project icon */
+        .button-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(124,140,248,0.22);
+        }
+
+        .underline-link {
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .underline-link:hover {
+            opacity: 0.8;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+            font-weight: 900;
+            color: var(--accent-dark);
+        }
+
+        .section-title::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: 0;
+
+            transform: translateX(-50%);
+
+            width: 90px;
+            height: 5px;
+
+            border-radius: 999px;
+
+            background: linear-gradient(
+                90deg,
+                var(--gradient-start),
+                var(--gradient-end)
+            );
+        }
+
+        .card {
+            background: rgba(255,255,255,0.72);
+
+            backdrop-filter: blur(16px);
+
+            border-radius: 2rem;
+
+            border: 1px solid rgba(255,255,255,0.4);
+
+            box-shadow:
+                0 10px 30px rgba(99,102,241,0.08),
+                inset 0 1px 1px rgba(255,255,255,0.4);
+
+            transition: 0.35s ease;
+
+            overflow: hidden;
+
+            position: relative;
+
+            padding: 2.3rem;
+
+            display: flex;
+            flex-direction: column;
+
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            border-color: var(--accent-main);
+
+            box-shadow:
+                0 20px 40px rgba(124,140,248,0.18),
+                0 0 20px rgba(139,255,176,0.08);
+        }
+
         .project-card-icon {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            font-size: 1.8rem;
-            color: var(--soft-blue);
-            opacity: 0.6;
+
+            font-size: 1.7rem;
+
+            color: var(--accent-main);
+
+            opacity: 0.5;
         }
 
-        /* Responsive Adjustments */
+        .project-category-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-dark);
+        }
+
+        .tech-badge {
+            padding: 0.8rem 1.3rem;
+
+            background: rgba(255,255,255,0.7);
+
+            border-radius: 999px;
+
+            border: 1px solid var(--silver-border);
+
+            font-weight: 600;
+
+            box-shadow: 0 4px 12px rgba(99,102,241,0.06);
+        }
+
+        .card-footer {
+            margin-top: auto;
+            padding-top: 2rem;
+        }
+
+        .disabled {
+            background: #cbd5e1;
+            pointer-events: none;
+        }
+
+        footer {
+            border-top: 1px solid var(--silver-border);
+        }
+
         @media (max-width: 768px) {
-            .hero-section {
-                padding: 4rem 1rem;
-                margin-bottom: 4rem;
-            }
+
             .hero-title {
-                font-size: 3.2rem;
+                font-size: 3rem;
             }
+
             .hero-subtitle {
-                font-size: 1.4rem;
+                font-size: 1.1rem;
             }
+
             .section-title {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
-            .section-title::after {
-                width: 70px;
-                height: 4px;
-            }
+
             .card {
-                padding: 2rem;
-                border-radius: 1.75rem;
+                padding: 1.8rem;
             }
-            .card h4 {
-                font-size: 1.7rem;
-            }
-            .project-category-icon {
-                font-size: 3.5rem;
-            }
-            .button-link {
-                padding: 0.9rem 2rem;
-                font-size: 0.95rem;
-            }
-        }
-
-        /* Keyframe for subtle floating animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Apply float animation to hero title */
-        .hero-title span {
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .hero-title span:nth-child(2) { animation-delay: 0.1s; }
-        .hero-title span:nth-child(3) { animation-delay: 0.2s; }
-        .hero-title span:nth-child(4) { animation-delay: 0.3s; }
-        .hero-title span:nth-child(5) { animation-delay: 0.4s; }
-        .hero-title span:nth-child(6) { animation-delay: 0.5s; }
-        .hero-title span:nth-child(7) { animation-delay: 0.6s; }
-        .hero-title span:nth-child(8) { animation-delay: 0.7s; }
-        .hero-title span:nth-child(9) { animation-delay: 0.8s; }
-        .hero-title span:nth-child(10) { animation-delay: 0.9s; }
-        .hero-title span:nth-child(11) { animation-delay: 1.0s; }
-        .hero-title span:nth-child(12) { animation-delay: 1.1s; }
-        .hero-title span:nth-child(13) { animation-delay: 1.2s; }
-        .hero-title span:nth-child(14) { animation-delay: 1.3s; }
-        .hero-title span:nth-child(15) { animation-delay: 1.4s; }
-        .hero-title span:nth-child(16) { animation-delay: 1.5s; }
-        .hero-title span:nth-child(17) { animation-delay: 1.6s; }
-        .hero-title span:nth-child(18) { animation-delay: 1.7s; }
-        .hero-title span:nth-child(19) { animation-delay: 1.8s; }
-        .hero-title span:nth-child(20) { animation-delay: 1.9s; }
-        .hero-title span:nth-child(21) { animation-delay: 2.0s; }
-        .hero-title span:nth-child(22) { animation-delay: 2.1s; }
-        .hero-title span:nth-child(23) { animation-delay: 2.2s; }
-        .hero-title span:nth-child(24) { animation-delay: 2.3s; }
-        .hero-title span:nth-child(25) { animation-delay: 2.4s; }
-        .hero-title span:nth-child(26) { animation-delay: 2.5s; }
-        .hero-title span:nth-child(27) { animation-delay: 2.6s; }
-        .hero-title span:nth-child(28) { animation-delay: 2.7s; }
-        .hero-title span:nth-child(29) { animation-delay: 2.8s; }
-        .hero-title span:nth-child(30) { animation-delay: 2.9s; }
-
-        /* Add a sparkle effect for the hero title stars */
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-
-        .hero-title .sparkle {
-            animation: sparkle 1.5s infinite ease-in-out;
         }
 
     </style>
+
 </head>
 
 <body class="p-6 md:p-12 lg:p-16">
 
-    <header class="text-center hero-section">
+    <header class="hero-section text-center">
+
         <div class="hero-content">
-            <h1 class="hero-title mb-4">
-                <span class="sparkle">✨</span> Ngwekazi Mailola <span class="sparkle">✨</span>
-            </h1>
-            <p class="hero-subtitle mt-2">
-                Building <span class="font-bold text-accent-dark">Scalable Secure Solutions</span> with Code.
-                <br>
-                Junior Software Developer | Python, Java, JavaScript, C#
+
+            <p class="terminal-line">
+                > INITIALISING_BACKEND_SYSTEM.exe
             </p>
-            <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6 text-base sm:text-lg">
-                <a href="#projects" class="button-link group">
-                    Explore My Work <i class="fa-solid fa-arrow-down-long ml-2 transition-transform group-hover:translate-y-1"></i>
+
+            <h1 class="hero-title">
+                ✦ Ngwekazi Mailola ✦
+            </h1>
+
+            <p class="hero-subtitle">
+                Junior Java Backend Developer specialising in
+                <span class="font-bold text-indigo-500">
+                    Spring Boot, REST APIs & Secure Backend Systems
+                </span>
+
+                <br>
+
+                Java | Spring Boot | MySQL | Microservices | Azure Security
+            </p>
+
+            <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6">
+
+                <a href="#projects" class="button-link">
+                    Explore My Work
+                    <i class="fa-solid fa-arrow-down"></i>
                 </a>
-                <a href="https://github.com/ngwekazimailola" target="_blank" rel="noopener noreferrer" class="underline-link flex items-center gap-3">
-                    <i class="fa-brands fa-github text-3xl"></i> GitHub Profile
+
+                <a href="https://github.com/ngwekazimailola"
+                   target="_blank"
+                   class="underline-link flex items-center gap-3">
+
+                    <i class="fa-brands fa-github text-3xl"></i>
+
+                    GitHub Profile
                 </a>
+
             </div>
+
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+
+                <span class="tech-badge">Java</span>
+                <span class="tech-badge">Spring Boot</span>
+                <span class="tech-badge">REST APIs</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">Azure Security</span>
+                <span class="tech-badge">JUnit</span>
+                <span class="tech-badge">Microservices</span>
+
+            </div>
+
         </div>
+
     </header>
 
     <section class="text-center mb-24 px-4">
-        <h2 class="text-3xl sm:text-4xl section-title mb-14">Professional Summary</h2>
-        <p class="max-w-4xl mx-auto text-xl text-text-dark leading-relaxed font-medium">
-            A passionate and results-driven Junior Software Developer with a <span class="text-accent-main font-semibold">robust foundation</span> in <span class="font-semibold">Python, Java, and JavaScript</span>, backed by practical experience in building scalable web applications and innovative software solutions. I thrive in <span class="text-accent-main font-semibold">collaborative, cross-functional teams</span>, adept at tackling complex technical challenges and consistently delivering high-quality, impactful results. Eager to contribute to dynamic projects and grow within an inclusive environment.
+
+        <h2 class="text-4xl section-title mb-14">
+            Professional Summary
+        </h2>
+
+        <p class="max-w-4xl mx-auto text-xl leading-relaxed font-medium">
+
+            Junior Java Developer with practical experience building
+            <span class="text-indigo-500 font-semibold">
+                Spring Boot microservices, REST APIs and secure database-driven applications
+            </span>.
+
+            Experienced in developing maintainable backend systems during
+            work-integrated internships, improving application performance
+            and implementing secure software practices.
+
+            Microsoft Azure certified (AZ-500, SC-200) with a strong
+            interest in backend engineering, cloud security and scalable
+            enterprise application development.
+
         </p>
+
+    </section>
+
+    <section class="mb-24 max-w-6xl mx-auto">
+
+        <h2 class="text-4xl section-title mb-14 text-center">
+            Experience
+        </h2>
+
+        <div class="grid grid-cols-1 gap-8">
+
+            <div class="card">
+
+                <h3 class="text-2xl font-bold text-indigo-500">
+                    Work Integrated Learning Intern (NQF 6)
+                </h3>
+
+                <p class="text-text-light mt-2">
+                    KAYISE IT • Pretoria • Oct 2025 – Dec 2025
+                </p>
+
+                <ul class="mt-6 space-y-3">
+
+                    <li>
+                        • Co-developed a mobile-native SME accounting app focused on secure transaction handling.
+                    </li>
+
+                    <li>
+                        • Implemented backend role-based access control and encrypted data storage.
+                    </li>
+
+                    <li>
+                        • Applied security-by-design principles to REST API development.
+                    </li>
+
+                    <li>
+                        • Led backend quality assurance using Postman and SDLC-aligned documentation.
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="card">
+
+                <h3 class="text-2xl font-bold text-indigo-500">
+                    Work Integrated Learning Intern (NQF 5)
+                </h3>
+
+                <p class="text-text-light mt-2">
+                    KAYISE IT • Pretoria • Jul 2024
+                </p>
+
+                <ul class="mt-6 space-y-3">
+
+                    <li>
+                        • Enhanced a Django LMS and reduced load times by roughly 30%.
+                    </li>
+
+                    <li>
+                        • Refined MySQL queries and improved backend validation reliability.
+                    </li>
+
+                    <li>
+                        • Performed regression testing and maintainable documentation handover.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="mb-24 max-w-6xl mx-auto text-center">
+
+        <h2 class="text-4xl section-title mb-14">
+            Certifications
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div class="card">
+                <h3 class="text-xl font-bold text-indigo-500">
+                    AZ-500
+                </h3>
+
+                <p class="mt-3">
+                    Microsoft Azure Security Engineer Associate
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="text-xl font-bold text-indigo-500">
+                    SC-200
+                </h3>
+
+                <p class="mt-3">
+                    Microsoft Security Operations Analyst Associate
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="text-xl font-bold text-indigo-500">
+                    AI-900
+                </h3>
+
+                <p class="mt-3">
+                    Microsoft AI Fundamentals
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="text-xl font-bold text-indigo-500">
+                    DP-900
+                </h3>
+
+                <p class="mt-3">
+                    Microsoft Azure Data Fundamentals
+                </p>
+            </div>
+
+        </div>
+
     </section>
 
     <section id="projects" class="mb-24 max-w-7xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl section-title mb-18 text-center">🚀 My Projects</h2>
 
-        <div class="mb-20">
-            <div class="text-center mb-12">
-                <i class="project-category-icon fa-brands fa-python"></i>
-                <h3 class="text-2xl sm:text-3xl font-bold text-accent-main">Python Development</h3>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="card">
-                    <i class="project-card-icon fa-brands fa-python"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">Learning Platform Development (Internship Project)</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A comprehensive full-stack learning platform facilitating admin, lecturer, and student management, alongside robust content management and traceability. Built with modern web technologies.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Technologies: Django, React.js, MySQL, MongoDB</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/Learning_Platform" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="project-card-icon fa-brands fa-python"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">Tech Sales Management App</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A robust application for managing shop details, sales, returns, and stock for a tech company. Features continuous user input validation and comprehensive error handling.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Language: Python</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/Python-Tech-Sales-Management-Application" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="text-center mb-10">
+
+            <p class="terminal-line">
+                > INITIALISING_PROJECTS.exe
+            </p>
+
+            <h2 class="text-4xl section-title">
+                My Projects
+            </h2>
+
         </div>
 
-        <div class="mb-20">
-            <div class="text-center mb-12">
-                <i class="project-category-icon fa-solid fa-globe"></i>
-                <h3 class="text-2xl sm:text-3xl font-bold text-accent-main">Web Applications & Websites</h3>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="card">
-                    <i class="project-card-icon fa-solid fa-desktop"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">School Educational Website</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A responsive and user-friendly educational website, integrating multimedia to provide an engaging and accessible online learning experience for students.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Technologies: HTML, CSS, JavaScript</p>
-                    </div>
-                    <div class="card-footer">
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="project-card-icon fa-solid fa-gear"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">Municipality Management System</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            An ASP.NET Core MVC application designed for efficient management of municipal data and operations, featuring an intuitive user interface and a secure backend.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Languages: HTML, C#</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/Municipality-Management-System" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="project-card-icon fa-solid fa-book"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">BookManager API</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A C# RESTful API built for robust CRUD operations on book records, showcasing clean architecture principles and efficient data handling practices.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Language: C#</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/BookManagerAPI" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- JAVA PROJECTS -->
 
         <div class="mb-20">
+
             <div class="text-center mb-12">
+
                 <i class="project-category-icon fa-brands fa-java"></i>
-                <h3 class="text-2xl sm:text-3xl font-bold text-accent-main">Java Development</h3>
+
+                <h3 class="text-3xl font-bold text-indigo-500">
+                    Java Backend Development
+                </h3>
+
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
                 <div class="card">
-                    <i class="project-card-icon fa-solid fa-calculator"></i>
+
+                    <i class="project-card-icon fa-solid fa-network-wired"></i>
+
                     <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">Calculator Desktop App</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A user-friendly desktop calculator built with Java Swing, providing essential arithmetic operations through an intuitive graphical interface.
+
+                        <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                            Employee Onboarding System
+                        </h4>
+
+                        <p class="leading-relaxed">
+                            Enterprise-style onboarding platform built using Spring Boot microservices.
+                            Features separate services for personal information, role assignment
+                            and access provisioning with secure REST API communication.
                         </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Language: Java</p>
+
+                        <ul class="mt-5 space-y-2 text-sm text-text-light">
+
+                            <li>• Spring Boot REST APIs</li>
+                            <li>• MySQL schema design & ER diagrams</li>
+                            <li>• JUnit & Postman testing</li>
+                            <li>• Secure service communication</li>
+
+                        </ul>
+
+                        <p class="mt-5 text-sm font-medium text-text-light">
+                            Technologies: Java, Spring Boot, MySQL, JUnit, Postman
+                        </p>
+
                     </div>
+
                     <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/Java-Calculator-Desktop-Application" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
+
+                        <a href="#" class="button-link disabled">
+                            Private Repository
                         </a>
+
                     </div>
+
                 </div>
+
                 <div class="card">
+
                     <i class="project-card-icon fa-solid fa-book-open"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">Advanced Library Management System</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A feature-rich Java application for comprehensive book and member management, including due-date tracking and fine calculation with file-based persistence.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Language: Java</p>
-                    </div>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Advanced Library Management System
+                    </h4>
+
+                    <p>
+                        Database-driven Java application supporting book lending,
+                        overdue tracking and member management with structured
+                        business logic and persistent data handling.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Language: Java
+                    </p>
+
                     <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/Java-Advanced-Library-Management-System" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
+
+                        <a href="https://github.com/ngwekazimailola/Java-Advanced-Library-Management-System"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
                         </a>
+
                     </div>
+
                 </div>
+
                 <div class="card">
+
+                    <i class="project-card-icon fa-solid fa-list-check"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Task Manager Application
+                    </h4>
+
+                    <p>
+                        GUI-based task management application with filtering,
+                        categorisation and persistent data storage using modular
+                        object-oriented design principles.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Technologies: Java, MySQL
+                    </p>
+
+                    <div class="card-footer">
+
+                        <a href="#" class="button-link disabled">
+                            Private Repository
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="project-card-icon fa-solid fa-calculator"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Calculator Desktop App
+                    </h4>
+
+                    <p>
+                        Desktop calculator application developed with Java Swing,
+                        featuring responsive event-driven UI interactions and clean
+                        object-oriented implementation.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Language: Java
+                    </p>
+
+                    <div class="card-footer">
+
+                        <a href="https://github.com/ngwekazimailola/Java-Calculator-Desktop-Application"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
                     <i class="project-card-icon fa-solid fa-clock"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">Digital Clock</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A real-time Java GUI digital clock, leveraging multithreading to ensure smooth and responsive UI updates every second.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Language: Java</p>
-                    </div>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Digital Clock
+                    </h4>
+
+                    <p>
+                        Real-time Java GUI application demonstrating multithreading,
+                        timer scheduling and responsive desktop interface design.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Language: Java
+                    </p>
+
                     <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/Java-Digital-Clock" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
+
+                        <a href="https://github.com/ngwekazimailola/Java-Digital-Clock"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
                         </a>
+
                     </div>
+
                 </div>
+
                 <div class="card">
-                    <i class="project-card-icon fa-solid fa-list"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">Library Management System</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A foundational console-based Java application providing core library operations: book and member management, search, and checkout functionalities.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Language: Java</p>
-                    </div>
+
+                    <i class="project-card-icon fa-solid fa-book"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Library Management System
+                    </h4>
+
+                    <p>
+                        Console-based library system implementing object-oriented
+                        programming concepts, search functionality and efficient
+                        record management workflows.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Language: Java
+                    </p>
+
                     <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/Java-Library-Management-System" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
+
+                        <a href="https://github.com/ngwekazimailola/Java-Library-Management-System"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="mb-16">
+        <!-- PYTHON -->
+
+        <div class="mb-20">
+
             <div class="text-center mb-12">
-                <i class="project-category-icon fa-solid fa-cogs"></i>
-                <h3 class="text-2xl sm:text-3xl font-bold text-accent-main">C# Development</h3>
+
+                <i class="project-category-icon fa-brands fa-python"></i>
+
+                <h3 class="text-3xl font-bold text-indigo-500">
+                    Python Development
+                </h3>
+
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
                 <div class="card">
-                    <i class="project-card-icon fa-solid fa-paw"></i>
-                    <div class="card-content">
-                        <h4 class="text-2xl sm:text-2xl font-bold text-accent-dark mb-3">Virtual Zoo Management System</h4>
-                        <p class="mt-3 text-text-dark text-base leading-relaxed">
-                            A robust C# application demonstrating strong OOP principles and design patterns for managing animals within a virtual zoo environment.
-                        </p>
-                        <p class="text-sm mt-4 text-text-light font-medium">Language: C#</p>
-                    </div>
+
+                    <i class="project-card-icon fa-brands fa-python"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Learning Platform Development
+                    </h4>
+
+                    <p>
+                        Full-stack learning management platform supporting
+                        administrators, lecturers and students with scalable
+                        content management and traceability features.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Technologies: Django, React.js, MySQL, MongoDB
+                    </p>
+
                     <div class="card-footer">
-                        <a href="https://github.com/ngwekazimailola/Advanced-Virtual-Zoo-Management-System" target="_blank" rel="noopener noreferrer" class="button-link text-sm">
-                            View Code <i class="fa-solid fa-code ml-1"></i>
+
+                        <a href="https://github.com/ngwekazimailola/Learning_Platform"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
                         </a>
+
                     </div>
+
                 </div>
+
+                <div class="card">
+
+                    <i class="project-card-icon fa-brands fa-python"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Tech Sales Management App
+                    </h4>
+
+                    <p>
+                        Python application for managing sales, returns and stock
+                        operations with continuous validation and structured
+                        business logic handling.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Language: Python
+                    </p>
+
+                    <div class="card-footer">
+
+                        <a href="https://github.com/ngwekazimailola/Python-Tech-Sales-Management-Application"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
+
+        <!-- WEB -->
+
+        <div class="mb-20">
+
+            <div class="text-center mb-12">
+
+                <i class="project-category-icon fa-solid fa-globe"></i>
+
+                <h3 class="text-3xl font-bold text-indigo-500">
+                    Web Applications
+                </h3>
+
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <div class="card">
+
+                    <i class="project-card-icon fa-solid fa-school"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        School Educational Website
+                    </h4>
+
+                    <p>
+                        Responsive educational platform integrating multimedia
+                        content to improve accessibility and engagement for students.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Technologies: HTML, CSS, JavaScript
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="project-card-icon fa-solid fa-building"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Municipality Management System
+                    </h4>
+
+                    <p>
+                        ASP.NET Core MVC system designed for efficient management
+                        of municipal records and operations with secure backend functionality.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Languages: HTML, C#
+                    </p>
+
+                    <div class="card-footer">
+
+                        <a href="https://github.com/ngwekazimailola/Municipality-Management-System"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="project-card-icon fa-solid fa-book"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        BookManager API
+                    </h4>
+
+                    <p>
+                        RESTful API built with C# and .NET supporting CRUD operations,
+                        structured backend logic and maintainable architecture.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Technologies: C#, .NET
+                    </p>
+
+                    <div class="card-footer">
+
+                        <a href="https://github.com/ngwekazimailola/BookManagerAPI"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- C# -->
+
+        <div>
+
+            <div class="text-center mb-12">
+
+                <i class="project-category-icon fa-solid fa-code"></i>
+
+                <h3 class="text-3xl font-bold text-indigo-500">
+                    C# Development
+                </h3>
+
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <div class="card">
+
+                    <i class="project-card-icon fa-solid fa-paw"></i>
+
+                    <h4 class="text-2xl font-bold text-indigo-500 mb-3">
+                        Virtual Zoo Management System
+                    </h4>
+
+                    <p>
+                        Object-oriented C# application demonstrating
+                        strong design principles and structured data handling
+                        within a virtual zoo environment.
+                    </p>
+
+                    <p class="mt-5 text-sm font-medium text-text-light">
+                        Language: C#
+                    </p>
+
+                    <div class="card-footer">
+
+                        <a href="https://github.com/ngwekazimailola/Advanced-Virtual-Zoo-Management-System"
+                           target="_blank"
+                           class="button-link">
+
+                            View Code
+                            <i class="fa-solid fa-code"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <footer class="text-center mt-24 text-text-light text-sm md:text-base p-8 border-t border-border-color">
-        <p>&copy; 2025 Ngwekazi Mailola. All rights reserved.</p>
-        <p class="mt-3">Designed with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> and Code</p>
+    <footer class="text-center mt-24 text-sm md:text-base p-8">
+
+        <p class="font-semibold">
+            Ngwekazi Mailola • Java Backend Developer
+        </p>
+
+        <p class="mt-3 text-text-light">
+            Spring Boot • REST APIs • Secure Systems • Azure Security
+        </p>
+
+        <div class="mt-5 flex justify-center gap-6 text-2xl">
+
+            <a href="https://github.com/ngwekazimailola"
+               target="_blank">
+
+                <i class="fa-brands fa-github"></i>
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-brands fa-linkedin"></i>
+
+            </a>
+
+        </div>
+
+        <p class="mt-6 text-text-light">
+            © 2026 Ngwekazi Mailola. All rights reserved.
+        </p>
+
     </footer>
 
 </body>
 </html>
-
-
